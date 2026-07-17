@@ -1,0 +1,48 @@
+import random
+coins = 50
+health = 100
+Name = input("What is your name adventurer? ")
+print(f"Hello {Name} Welcome to the crazy world of pylandia!")
+print(f"you have: {coins} coins and {health} LP")
+rpg_class = input("What class do you want to be? (Warrior, Mage, Archer) ")
+if rpg_class == "Warrior":
+    print("You are a warrior, strong and brave!")
+elif rpg_class == "Mage":
+    print("you are a mage, smart and wise!")
+elif rpg_class == "Archer":
+    print("you are an archer, skilled and precise!")
+else:
+    print("You are a human, you have no class!")
+print("you stumble into a 2 way path, do you want to go left or right?")
+chosen_path = input("left or right? ")
+if chosen_path == "left":
+    go_left = input("you see a goblin, do you want to fight or run? ")
+    goblin_health = 15
+    if go_left == "fight":
+        while goblin_health > 0 and health > 0:
+         damage = random.randint(-15, 15)
+         if damage < 0:  
+            print(f"you took {+damage} damage")
+            health = health + damage
+         elif damage > 0:
+            print(f"you dealt {damage} damage")
+            goblin_health = goblin_health - damage
+         if goblin_health <= 0:
+            print("you killed the goblin!")
+         if health <= 0:
+            print("you died")
+            exit()
+    else:
+        print("you turn back and go through the right path")
+        chosen_path = "right"
+if chosen_path == "right":
+    go_right = input("you see an old, abandonded house, do you want to enter? ")
+    if go_right == "yes":
+        print("you enter the house there is a dead body on the floor and a goblin's head in the corner")
+        explore = input("do you want to explore the house? ")
+        if explore == "yes":
+            print("you find a chest with 25 coins")
+            coins += 25
+            print(f"you now have {coins}💰")
+print("you continue your journey and stumble upon a life gambling machine, you can loose or win LP do you want to gamble with your life?")
+print("too lazy to do this")
